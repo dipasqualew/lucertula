@@ -1,0 +1,12 @@
+{
+  "name": "keylocal.js",
+  "version": "0.1.0",
+  "description": "Keep your public and secret information grounded in your browser!",
+  "main": "index.js",
+  "repository": "git@github.com:dipasqualew/keylocal.js.git",
+  "author": "William Di Pasquale <dipasquale.w@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo test"
+  }
+}
