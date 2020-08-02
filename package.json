@@ -7,6 +7,19 @@
   "author": "William Di Pasquale <dipasquale.w@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "echo test"
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "babel-jest": "^26.2.2",
+    "eslint": "^7.6.0",
+    "eslint-config-dipasqualew": "^1.0.0",
+    "jest": "^26.2.2",
+    "sinon": "^9.0.2",
+    "text-encoding-utf-8": "^1.0.2"
+  },
+  "dependencies": {
+    "openpgp": "^4.10.7"
   }
 }

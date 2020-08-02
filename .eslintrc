@@ -1,0 +1,6 @@
+{
+    "extends": "dipasqualew",
+    "parserOptions": {
+        "sourceType": "module"
+    }
+}

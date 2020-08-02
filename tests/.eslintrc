@@ -1,0 +1,6 @@
+{
+    "extends": [
+        "../.eslintrc",
+        "dipasqualew/mixins/testing/mocha"
+    ]
+}
