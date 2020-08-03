@@ -3,8 +3,8 @@ name: keylocal.js workflows
 on: [push]
 
 jobs:
-  build:
-
+  test:
+    name: Run Tests
     runs-on: ubuntu-latest
 
     strategy:
@@ -21,3 +21,18 @@ jobs:
     - run: npm test
       env:
         CI: true
+
+  publish:
+    name: Publish on NPM
+    needs: [test]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
