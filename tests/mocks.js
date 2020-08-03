@@ -56,6 +56,20 @@ export const getLocalStorage = () => {
 };
 
 /**
+ * Returns a mocked SessionStorage
+ *
+ * @returns {object}
+ */
+export const getSessionStorage = () => {
+    const ss = { __data__: {} };
+    ss.getItem = (key) => ss.__data__[key];
+    ss.setItem = (key, value) => (ss.__data__[key] = value);
+
+    return ss;
+};
+
+
+/**
  * Typical payload to be encrypted.
  * Also the content of the encrypted
  * blocks below.

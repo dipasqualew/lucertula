@@ -1,10 +1,12 @@
 import sinon from 'sinon';
 
 import LocalStorageHandler from '../../src/storage/localStorage';
+import SessionStorageHandler from '../../src/storage/sessionStorage';
 import KeypairHandler from '../../src/strategy/pgp/keypair';
 import PasswordHandler from '../../src/strategy/pgp/password';
 import {
     getLocalStorage,
+    getSessionStorage,
     PAYLOAD,
     PASSWORD,
     PUBLIC_KEY,
@@ -15,11 +17,23 @@ import {
 } from '../mocks';
 
 
+/**
+ * Context to be passed
+ * to password-based strategies.
+ *
+ * @const {object}
+ */
 const PASSWORD_CONTEXT = {
     password: PASSWORD,
     encryptedBlock: ENCRYPTED_WITH_PASSWORD,
 };
 
+/**
+ * Context to be passed
+ * to keypair-based strategies.
+ *
+ * @const {object}
+ */
 const KEYPAIR_CONTEXT = {
     publicKey: PUBLIC_KEY,
     privateKey: PRIVATE_KEY,
@@ -27,6 +41,14 @@ const KEYPAIR_CONTEXT = {
     encryptedBlock: ENCRYPTED_WITH_KEYPAIR,
 };
 
+/**
+ * Runs the integration tests
+ * for a combination of strategy and storage.
+ *
+ * @param {Function} getStrategy
+ * @param {Function} getStorage
+ * @param {object} context
+ */
 const integrationMatchTest = (getStrategy, getStorage, context) => {
     beforeAll(() => {
         const textEncoding = require('text-encoding-utf-8');
@@ -84,17 +106,46 @@ const integrationMatchTest = (getStrategy, getStorage, context) => {
     });
 };
 
-
+/**
+ * Returns a configured PasswordHandler.
+ *
+ * @returns {PasswordHandler}
+ */
 const getPasswordHandler = () => new PasswordHandler();
 
+/**
+ * Returns a configured KeypairHandler.
+ *
+ * @returns {KeypairHandler}
+ */
 const getKeypairHandler = () => new KeypairHandler();
 
+/**
+ * Returns a configured LocalStorageHandler.
+ *
+ * @param {StrategyHandler} strategy
+ * @returns {LocalStorageHandler}
+ */
 const getLocalStorageHandler = (strategy) => {
     const ls = getLocalStorage();
     const lsh = new LocalStorageHandler('lsh', { strategy });
     sinon.stub(lsh, 'ls').get(() => ls);
 
     return lsh;
+};
+
+/**
+ * Returns a configured SessionStorageHandler.
+ *
+ * @param {StrategyHandler} strategy
+ * @returns {SessionStorageHandler}
+ */
+const getSessionStorageHandler = (strategy) => {
+    const ss = getSessionStorage();
+    const ssh = new SessionStorageHandler('ssh', { strategy });
+    sinon.stub(ssh, 'ss').get(() => ss);
+
+    return ssh;
 };
 
 const strategies = [
@@ -104,6 +155,7 @@ const strategies = [
 
 const storages = [
     getLocalStorageHandler,
+    getSessionStorageHandler,
 ];
 
 strategies.forEach(([getStrategy, context]) => {

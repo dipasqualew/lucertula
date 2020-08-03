@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`serialize Serializes the payload 1`] = `
+Object {
+  "meta": Object {
+    "datetime": Any<Number>,
+    "key": "StorageHandlerKey",
+    "serializer": "SessionStorageHandler",
+    "version": 1,
+  },
+  "payload": "encrypted",
+}
+`;
