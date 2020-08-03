@@ -1,7 +1,9 @@
 
 import StorageHandler from './handler';
 
-
+/**
+ * LocalStorage Handler
+ */
 export default class LocalStorageHandler extends StorageHandler {
 
     /**

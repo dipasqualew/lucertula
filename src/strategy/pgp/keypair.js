@@ -1,12 +1,26 @@
-
-import { message, decrypt, encrypt } from 'openpgp';
+import { message, decrypt, encrypt, key } from 'openpgp';
 
 import StrategyHandler from '../handler';
 
 /**
- * PGP Password Handler
+ * PGP KeypairHandler Handler
  */
-export default class PasswordHandler extends StrategyHandler {
+export default class KeypairHandler extends StrategyHandler {
+
+    async readKeys(context) {
+        const [{ keys: publicKeys }, { keys: privateKeys }] = await Promise.all([
+            key.readArmored(context.publicKey),
+            key.readArmored(context.privateKey),
+        ]);
+
+        await Promise.all(privateKeys.map((pk) => pk.decrypt(context.passphrase)));
+
+        return {
+            publicKeys,
+            privateKeys,
+        };
+    }
+
     /**
      * Encrypts a string with the given password.
      *
@@ -16,13 +30,17 @@ export default class PasswordHandler extends StrategyHandler {
      * @returns {string}
      */
     async encrypt(context, plaintext) {
+        const { publicKeys, privateKeys } = await this.readKeys(context);
+
         const options = {
             message: message.fromText(plaintext),
-            passwords: [context.password],
+            publicKeys,
+            privateKeys,
             armor: true,
         };
 
         const output = await encrypt(options);
+
         return output.data;
     }
 
@@ -35,13 +53,16 @@ export default class PasswordHandler extends StrategyHandler {
      * @returns {string}
      */
     async decrypt(context, encrypted) {
+        const { publicKeys, privateKeys } = await this.readKeys(context);
+
         const options = {
             message: await message.readArmored(encrypted),
-            passwords: [context.password],
-            format: 'utf8',
+            publicKeys,
+            privateKeys,
         };
 
         const output = await decrypt(options);
+
         return output.data;
     }
 }

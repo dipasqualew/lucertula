@@ -1,14 +1,18 @@
-import PasswordHandler from '../../../../src/strategy/pgp/password';
+import KeypairHandler from '../../../../src/strategy/pgp/keypair';
 import {
     PAYLOAD,
-    PASSWORD,
-    ENCRYPTED_WITH_PASSWORD,
+    PUBLIC_KEY,
+    PRIVATE_KEY,
+    KEYPAIR_PASSPHRASE,
+    ENCRYPTED_WITH_KEYPAIR,
 } from '../../../mocks';
 
-describe('PasswordHandler', () => {
+describe('KeypairHandler', () => {
 
     const context = {
-        password: PASSWORD,
+        publicKey: PUBLIC_KEY,
+        privateKey: PRIVATE_KEY,
+        passphrase: KEYPAIR_PASSPHRASE,
     };
 
     beforeAll(() => {
@@ -17,7 +21,7 @@ describe('PasswordHandler', () => {
     });
 
     it('Encrypts a string', async () => {
-        const strategy =  new PasswordHandler();
+        const strategy =  new KeypairHandler();
         const encrypted = await strategy.encrypt(context, 'Hello World');
 
         expect(encrypted).toContain('-----BEGIN PGP MESSAGE-----');
@@ -25,19 +29,18 @@ describe('PasswordHandler', () => {
     });
 
     it('Decrypts a string', async () => {
-        const strategy = new PasswordHandler();
-        const decrypted = await strategy.decrypt(context, ENCRYPTED_WITH_PASSWORD);
+        const strategy = new KeypairHandler();
+        const decrypted = await strategy.decrypt(context, ENCRYPTED_WITH_KEYPAIR);
 
         expect(decrypted).toEqual(JSON.stringify(PAYLOAD));
     });
 
     it('Encrypts and decrypts a string', async () => {
-        const strategy = new PasswordHandler();
+        const strategy = new KeypairHandler();
         const plaintext = 'Some plaintext string';
-        const password = 'Somepassword';
 
-        const encrypted = await strategy.encrypt({ password }, plaintext);
-        const decrypted = await strategy.decrypt({ password }, encrypted);
+        const encrypted = await strategy.encrypt(context, plaintext);
+        const decrypted = await strategy.decrypt(context, encrypted);
 
         expect(decrypted).toEqual(plaintext);
     });

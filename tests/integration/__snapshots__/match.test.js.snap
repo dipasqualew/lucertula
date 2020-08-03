@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocalStorageHandler + KeypairHandler Encrypts a string 1`] = `
+Object {
+  "meta": Object {
+    "datetime": Any<Number>,
+    "key": "lsh",
+    "serializer": "LocalStorageHandler",
+    "version": 1,
+  },
+  "payload": Any<String>,
+}
+`;
+
+exports[`LocalStorageHandler + PasswordHandler Encrypts a string 1`] = `
+Object {
+  "meta": Object {
+    "datetime": Any<Number>,
+    "key": "lsh",
+    "serializer": "LocalStorageHandler",
+    "version": 1,
+  },
+  "payload": Any<String>,
+}
+`;
