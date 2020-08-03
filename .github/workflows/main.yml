@@ -1,4 +1,4 @@
-name: keylocal.js workflows
+name: main
 
 on: [push]
 
