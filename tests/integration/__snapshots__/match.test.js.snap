@@ -1,5 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`InMemoryHandler + KeypairHandler Encrypts a string 1`] = `
+Object {
+  "meta": Object {
+    "datetime": Any<Number>,
+    "key": "imh",
+    "serializer": "InMemoryHandler",
+    "version": 1,
+  },
+  "payload": Any<String>,
+}
+`;
+
+exports[`InMemoryHandler + PasswordHandler Encrypts a string 1`] = `
+Object {
+  "meta": Object {
+    "datetime": Any<Number>,
+    "key": "imh",
+    "serializer": "InMemoryHandler",
+    "version": 1,
+  },
+  "payload": Any<String>,
+}
+`;
+
 exports[`LocalStorageHandler + KeypairHandler Encrypts a string 1`] = `
 Object {
   "meta": Object {
