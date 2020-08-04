@@ -25,7 +25,6 @@ jobs:
   publish:
     name: Publish on NPM
     needs: [test]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
 
     steps:

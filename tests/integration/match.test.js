@@ -1,5 +1,6 @@
 import sinon from 'sinon';
 
+import InMemoryHandler from '../../src/storage/inMemory';
 import LocalStorageHandler from '../../src/storage/localStorage';
 import SessionStorageHandler from '../../src/storage/sessionStorage';
 import KeypairHandler from '../../src/strategy/pgp/keypair';
@@ -148,12 +149,22 @@ const getSessionStorageHandler = (strategy) => {
     return ssh;
 };
 
+/**
+ * Returns a configured InMemoryHandler.
+ *
+ * @param {StrategyHandler} strategy
+ * @returns {InMemoryHandler}
+ */
+
+const getInMemoryHandler = (strategy) => new InMemoryHandler('imh', { strategy });
+
 const strategies = [
     [getPasswordHandler, PASSWORD_CONTEXT],
     [getKeypairHandler, KEYPAIR_CONTEXT],
 ];
 
 const storages = [
+    getInMemoryHandler,
     getLocalStorageHandler,
     getSessionStorageHandler,
 ];
