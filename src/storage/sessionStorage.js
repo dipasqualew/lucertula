@@ -29,4 +29,11 @@ export default class SessionStorageHandler extends StorageHandler {
         return JSON.parse(this.ss.getItem(this.key));
     }
 
+    /**
+     * @inheritdoc
+     */
+    async implClear() {
+        this.ss.removeItem(this.key);
+    }
+
 }

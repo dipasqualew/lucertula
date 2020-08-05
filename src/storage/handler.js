@@ -90,7 +90,22 @@ export default class StorageHandler {
      */
     async load(context) {
         const serialized = await this.implLoad();
+
+        if (!serialized) {
+            return null;
+        }
+
         return await this.deserialize(context, serialized);
+    }
+
+    /**
+     * Clears the storage
+     * deleting any encrypted data.
+     *
+     * @param {object} context
+     */
+    async clear(context) {
+        return await this.implClear(context);
     }
 
     /**
@@ -113,6 +128,16 @@ export default class StorageHandler {
      */
     async implLoad(_context) {
         throw new Error('Not implemented.');
+    }
+
+    /**
+     * Clears the storage
+     * deleting any encrypted data.
+     *
+     * @param {object} context
+     */
+    async implClear(_context) {
+        throw new Error('Not implemented');
     }
 
 }
