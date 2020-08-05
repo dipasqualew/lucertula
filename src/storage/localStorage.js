@@ -12,7 +12,7 @@ export default class LocalStorageHandler extends StorageHandler {
      * @returns {WindowLocalStorage}
      */
     get ls() {
-        return this.context.localStorage;
+        return this.di.localStorage;
     }
 
     /**
