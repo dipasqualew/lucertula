@@ -19,14 +19,14 @@ export default class SessionStorageHandler extends StorageHandler {
      * @inheritdoc
      */
     async implSave(context, data) {
-        this.ss.setItem(this.key, data);
+        this.ss.setItem(this.key, JSON.stringify(data));
     }
 
     /**
      * @inheritdoc
      */
     implLoad() {
-        return this.ss.getItem(this.key);
+        return JSON.parse(this.ss.getItem(this.key));
     }
 
 }

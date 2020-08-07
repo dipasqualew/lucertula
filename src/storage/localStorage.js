@@ -17,16 +17,18 @@ export default class LocalStorageHandler extends StorageHandler {
 
     /**
      * @inheritdoc
+     * TODO: Doesn't handle circular data
      */
     async implSave(context, data) {
-        this.ls.setItem(this.key, data);
+        this.ls.setItem(this.key, JSON.stringify(data));
     }
 
     /**
      * @inheritdoc
+     * TODO: Doesn't handle circular data
      */
     implLoad() {
-        return this.ls.getItem(this.key);
+        return JSON.parse(this.ls.getItem(this.key));
     }
 
 }
