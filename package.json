@@ -6,6 +6,7 @@
   "repository": "git@github.com:dipasqualew/keylocal.js.git",
   "author": "William Di Pasquale <dipasquale.w@gmail.com>",
   "license": "MIT",
+  "sideEffects": false,
   "scripts": {
     "docs": "jsdoc --recurse src --destination docs",
     "test": "jest"
