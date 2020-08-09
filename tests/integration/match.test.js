@@ -104,6 +104,18 @@ const integrationMatchTest = (getStrategy, getStorage, context) => {
 
             return expect(PAYLOAD).toEqual(actual);
         });
+
+        it('Clears the storage', async () => {
+            const strategy = getStrategy();
+            const storage = getStorage(strategy);
+            const encrypted = await storage.save(context, PAYLOAD);
+
+            await storage.clear();
+
+            const decrypted = await storage.load(context);
+
+            expect(decrypted).toEqual(null);
+        });
     });
 };
 

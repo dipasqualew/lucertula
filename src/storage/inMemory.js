@@ -25,4 +25,11 @@ export default class InMemoryHandler extends StorageHandler {
         return this.__storage__;
     }
 
+    /**
+     * @inheritdoc
+     */
+    implClear() {
+        return this.__storage__ = null;
+    }
+
 }

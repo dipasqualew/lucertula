@@ -49,9 +49,9 @@ export const getStorageHandler = (kls, key = 'StorageHandlerKey', di = null) => 
  */
 export const getLocalStorage = () => {
     const ls = { __data__: {} };
-    ls.getItem = (key) => ls.__data__[key];
+    ls.getItem = (key) => ls.__data__[key] || null;
     ls.setItem = (key, value) => (ls.__data__[key] = value);
-
+    ls.removeItem = () => (ls.__data__ = {} );
     return ls;
 };
 
@@ -62,8 +62,9 @@ export const getLocalStorage = () => {
  */
 export const getSessionStorage = () => {
     const ss = { __data__: {} };
-    ss.getItem = (key) => ss.__data__[key];
+    ss.getItem = (key) => ss.__data__[key] || null;
     ss.setItem = (key, value) => (ss.__data__[key] = value);
+    ss.removeItem = () => (ss.__data__ = {} );
 
     return ss;
 };
