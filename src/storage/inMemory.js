@@ -1,3 +1,7 @@
+/**
+ * @module Storage
+ */
+
 
 import StorageHandler from './handler';
 

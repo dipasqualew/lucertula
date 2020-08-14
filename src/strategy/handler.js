@@ -1,4 +1,6 @@
-
+/**
+ * @module Strategy
+ */
 
 export default class StrategyHandler {
 

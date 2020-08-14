@@ -1,3 +1,7 @@
+/**
+ * @module Strategy
+ */
+
 
 import { message, decrypt, encrypt } from 'openpgp';
 
