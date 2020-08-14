@@ -1,3 +1,8 @@
+/**
+ * @module Strategy
+ */
+
+
 import { message, decrypt, encrypt, key } from 'openpgp';
 
 import StrategyHandler from '../handler';

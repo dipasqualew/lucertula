@@ -1,3 +1,7 @@
+/**
+ * @module Storage
+ */
+
 
 /**
  * Abstract StorageHandler
