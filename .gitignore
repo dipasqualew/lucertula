@@ -1,1 +1,6 @@
+# Build artifacts
+coverage
+dist
+docs
 node_modules
+yarn-error.log

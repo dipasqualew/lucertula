@@ -1,4 +1,4 @@
-import InMemoryStorage from '../../../src/storage/inMemory';
+import { InMemoryHandler } from '../../../src/storage/inMemory';
 import { storageHandlerSuite } from './mixins';
 
-storageHandlerSuite(InMemoryStorage);
+storageHandlerSuite(InMemoryHandler);
