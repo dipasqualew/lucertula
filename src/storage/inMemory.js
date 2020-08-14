@@ -1,12 +1,15 @@
 /**
- * @module Storage
+ * @module Storage/InMemoryHandler
  */
 
 
 import StorageHandler from './handler';
 
 /**
- * LocalStorage Handler
+ * In Memory Handler
+ *
+ * @constructor
+ * @extends Storage:StorageHandler
  */
 export default class InMemoryHandler extends StorageHandler {
 
@@ -15,15 +18,13 @@ export default class InMemoryHandler extends StorageHandler {
         this.__storage__ = null;
     }
 
-    /**
-     * @inheritdoc
-     */
+    /** @inheritdoc */
     async implSave(_context, data) {
         this.__storage__ = data;
     }
 
     /**
-     * @inheritdoc
+     * @override
      */
     implLoad() {
         return this.__storage__;

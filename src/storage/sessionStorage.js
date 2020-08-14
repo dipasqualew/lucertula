@@ -1,5 +1,5 @@
 /**
- * @module Storage
+ * @module Storage/SessionStorageHandler
  */
 
 
@@ -7,6 +7,8 @@ import StorageHandler from './handler';
 
 /**
  * SessionStorage Handler
+ *
+ * @constructor
  */
 export default class SessionStorageHandler extends StorageHandler {
 

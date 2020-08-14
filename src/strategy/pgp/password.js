@@ -9,6 +9,8 @@ import StrategyHandler from '../handler';
 
 /**
  * PGP Password Handler
+ *
+ * @constructor
  */
 export default class PasswordHandler extends StrategyHandler {
     /**

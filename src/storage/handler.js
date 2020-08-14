@@ -7,6 +7,8 @@
  * Abstract StorageHandler
  * with common utility methods
  * shared between all storage handlers.
+ *
+ * @constructor
  */
 export default class StorageHandler {
 

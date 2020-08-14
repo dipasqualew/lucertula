@@ -9,9 +9,21 @@ import StrategyHandler from '../handler';
 
 /**
  * PGP KeypairHandler Handler
+ *
+ * @constructor
  */
 export default class KeypairHandler extends StrategyHandler {
 
+    /**
+     * Read and decrypts
+     * public and private keys
+     *
+     * @param {object} context
+     * @param {string} context.publicKey
+     * @param {string} context.privateKey
+     *
+     * @returns {object}
+     */
     async readKeys(context) {
         const [{ keys: publicKeys }, { keys: privateKeys }] = await Promise.all([
             key.readArmored(context.publicKey),

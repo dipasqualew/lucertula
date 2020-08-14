@@ -2,6 +2,12 @@
  * @module Strategy
  */
 
+
+/**
+ * Strategy Handler base class.
+ *
+ * @constructor
+ */
 export default class StrategyHandler {
 
     encrypt(_plaintext, _config = {}) {

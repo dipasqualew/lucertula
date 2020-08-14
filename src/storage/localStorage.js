@@ -1,5 +1,5 @@
 /**
- * @module Storage
+ * @module Storage/LocalStorageHandler
  */
 
 
@@ -7,6 +7,8 @@ import StorageHandler from './handler';
 
 /**
  * LocalStorage Handler
+ *
+ * @constructor
  */
 export default class LocalStorageHandler extends StorageHandler {
 
