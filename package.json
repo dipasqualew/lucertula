@@ -1,22 +1,24 @@
 {
   "name": "keylocal",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "description": "Keep your public and secret information grounded in your browser!",
-  "main": "./lib/index.js",
-  "types": "./lib/main.d.ts",
-  "files": [
-    "/dist",
-    "README.md",
-    "LICENSE"
-  ],
-  "repository": "git@github.com:dipasqualew/keylocal.js.git",
+  "main": "./index.js",
+  "types": "./main.d.ts",
+  "repository": "git@github.com:dipasqualew/keylocal.git",
   "author": "William Di Pasquale <dipasquale.w@gmail.com>",
   "license": "MIT",
   "sideEffects": false,
+  "exports": {
+    "./": "./dist/"
+  },
+  "files": [
+    "./dist",
+    "./README.md",
+    "./LICENSE"
+  ],
   "scripts": {
     "build": "tsc",
     "docs": "typedoc",
-    "prepack": "yarn test && yarn build",
     "test": "jest --colors"
   },
   "devDependencies": {
