@@ -1,4 +1,4 @@
-import sessionStorage from '../../../src/storage/sessionStorage';
+import { SessionStorageHandler } from '../../../src/storage/sessionStorage';
 import { storageHandlerSuite } from './mixins';
 
-storageHandlerSuite(sessionStorage);
+storageHandlerSuite(SessionStorageHandler);

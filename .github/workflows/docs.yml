@@ -22,8 +22,8 @@ jobs:
 
       - name: Generate docs
         run: |
-          npm install
-          npm run docs
+          yarn install
+          yarn docs
 
       - name: Publish docs
         uses: JamesIves/github-pages-deploy-action@3.5.9
