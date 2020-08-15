@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>storage/sessionStorage.js</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/search.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.5/fuse.min.js"></script> -->
+    <script src="scripts/fuse.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="styles/clean-jsdoc-theme.css">
+    
+    
+    
+<svg aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none">
+    <defs>
+        <symbol id="copy-icon" viewbox="0 0 488.3 488.3">
+            <g>
+                <path d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z"/>
+                <path d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6    V38.6C439.65,17.3,422.35,0,401.05,0z"/>
+            </g>
+        </symbol>
+    </defs>
+</svg>
+
+</head>
+<body>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html"><div class="text">Home</div></a></h2><div class="search-box"><input type="text" placeholder="Search..." id="search-box" /><div class="search-item-container" id="search-item-container"><ul class="search-item-ul" id="search-item-ul"></ul></div></div><div class="sidebar-list-div"><h3>Classes</h3><ul><li><a href="module-Storage.html">Storage</a><ul class='methods'><li data-type='method'><a href="module-Storage.html#clear">clear</a></li><li data-type='method'><a href="module-Storage.html#deserialize">deserialize</a></li><li data-type='method'><a href="module-Storage.html#implClear">implClear</a></li><li data-type='method'><a href="module-Storage.html#implLoad">implLoad</a></li><li data-type='method'><a href="module-Storage.html#implSave">implSave</a></li><li data-type='method'><a href="module-Storage.html#load">load</a></li><li data-type='method'><a href="module-Storage.html#save">save</a></li><li data-type='method'><a href="module-Storage.html#serialize">serialize</a></li></ul></li><li><a href="module-Storage_InMemoryHandler.html">Storage/InMemoryHandler</a><ul class='methods'><li data-type='method'><a href="module-Storage_InMemoryHandler.html#implClear">implClear</a></li><li data-type='method'><a href="module-Storage_InMemoryHandler.html#implLoad">implLoad</a></li><li data-type='method'><a href="module-Storage_InMemoryHandler.html#implSave">implSave</a></li></ul></li><li><a href="module-Storage_LocalStorageHandler.html">Storage/LocalStorageHandler</a><ul class='methods'><li data-type='method'><a href="module-Storage_LocalStorageHandler.html#implClear">implClear</a></li><li data-type='method'><a href="module-Storage_LocalStorageHandler.html#implLoad">implLoad</a></li><li data-type='method'><a href="module-Storage_LocalStorageHandler.html#implSave">implSave</a></li></ul></li><li><a href="module-Storage_SessionStorageHandler.html">Storage/SessionStorageHandler</a><ul class='methods'><li data-type='method'><a href="module-Storage_SessionStorageHandler.html#implClear">implClear</a></li><li data-type='method'><a href="module-Storage_SessionStorageHandler.html#implLoad">implLoad</a></li><li data-type='method'><a href="module-Storage_SessionStorageHandler.html#implSave">implSave</a></li></ul></li><li><a href="module-Strategy.html">Strategy</a><ul class='methods'><li data-type='method'><a href="module-Strategy.html#decrypt">decrypt</a></li><li data-type='method'><a href="module-Strategy.html#decrypt">decrypt</a></li><li data-type='method'><a href="module-Strategy.html#encrypt">encrypt</a></li><li data-type='method'><a href="module-Strategy.html#encrypt">encrypt</a></li><li data-type='method'><a href="module-Strategy.html#readKeys">readKeys</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-Storage.html">Storage</a><ul class='methods'><li data-type='method'><a href="module-Storage.html#clear">clear</a></li><li data-type='method'><a href="module-Storage.html#deserialize">deserialize</a></li><li data-type='method'><a href="module-Storage.html#implClear">implClear</a></li><li data-type='method'><a href="module-Storage.html#implLoad">implLoad</a></li><li data-type='method'><a href="module-Storage.html#implSave">implSave</a></li><li data-type='method'><a href="module-Storage.html#load">load</a></li><li data-type='method'><a href="module-Storage.html#save">save</a></li><li data-type='method'><a href="module-Storage.html#serialize">serialize</a></li></ul></li><li><a href="module-Storage_InMemoryHandler.html">Storage/InMemoryHandler</a><ul class='methods'><li data-type='method'><a href="module-Storage_InMemoryHandler.html#implClear">implClear</a></li><li data-type='method'><a href="module-Storage_InMemoryHandler.html#implLoad">implLoad</a></li><li data-type='method'><a href="module-Storage_InMemoryHandler.html#implSave">implSave</a></li></ul></li><li><a href="module-Storage_LocalStorageHandler.html">Storage/LocalStorageHandler</a><ul class='methods'><li data-type='method'><a href="module-Storage_LocalStorageHandler.html#implClear">implClear</a></li><li data-type='method'><a href="module-Storage_LocalStorageHandler.html#implLoad">implLoad</a></li><li data-type='method'><a href="module-Storage_LocalStorageHandler.html#implSave">implSave</a></li></ul></li><li><a href="module-Storage_SessionStorageHandler.html">Storage/SessionStorageHandler</a><ul class='methods'><li data-type='method'><a href="module-Storage_SessionStorageHandler.html#implClear">implClear</a></li><li data-type='method'><a href="module-Storage_SessionStorageHandler.html#implLoad">implLoad</a></li><li data-type='method'><a href="module-Storage_SessionStorageHandler.html#implSave">implSave</a></li></ul></li><li><a href="module-Strategy.html">Strategy</a><ul class='methods'><li data-type='method'><a href="module-Strategy.html#decrypt">decrypt</a></li><li data-type='method'><a href="module-Strategy.html#decrypt">decrypt</a></li><li data-type='method'><a href="module-Strategy.html#encrypt">encrypt</a></li><li data-type='method'><a href="module-Strategy.html#encrypt">encrypt</a></li><li data-type='method'><a href="module-Strategy.html#readKeys">readKeys</a></li></ul></li></ul></div>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">storage/sessionStorage.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module Storage/SessionStorageHandler
+ */
+
+
+import StorageHandler from './handler';
+
+/**
+ * SessionStorage Handler
+ *
+ * @constructor
+ */
+export default class SessionStorageHandler extends StorageHandler {
+
+    /**
+     * Returns the SessionStorage instance.
+     *
+     * @returns {WindowSessionStorage}
+     */
+    get ss() {
+        return this.context.sessionStorage;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    async implSave(context, data) {
+        this.ss.setItem(this.key, JSON.stringify(data));
+    }
+
+    /**
+     * @inheritdoc
+     */
+    implLoad() {
+        return JSON.parse(this.ss.getItem(this.key));
+    }
+
+    /**
+     * @inheritdoc
+     */
+    async implClear() {
+        this.ss.removeItem(this.key);
+    }
+
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+  
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+<script>
+var list = [{"title":"module:Storage","link":"<a href=\"module-Storage.html\">module:Storage</a>"},{"title":"module:Storage#clear","link":"<a href=\"module-Storage.html#clear\">module:Storage &rtrif; clear</a>"},{"title":"module:Storage#deserialize","link":"<a href=\"module-Storage.html#deserialize\">module:Storage &rtrif; deserialize</a>"},{"title":"module:Storage#implClear","link":"<a href=\"module-Storage.html#implClear\">module:Storage &rtrif; implClear</a>"},{"title":"module:Storage#implLoad","link":"<a href=\"module-Storage.html#implLoad\">module:Storage &rtrif; implLoad</a>"},{"title":"module:Storage#implSave","link":"<a href=\"module-Storage.html#implSave\">module:Storage &rtrif; implSave</a>"},{"title":"module:Storage#load","link":"<a href=\"module-Storage.html#load\">module:Storage &rtrif; load</a>"},{"title":"module:Storage#save","link":"<a href=\"module-Storage.html#save\">module:Storage &rtrif; save</a>"},{"title":"module:Storage#serialize","link":"<a href=\"module-Storage.html#serialize\">module:Storage &rtrif; serialize</a>"},{"title":"module:Storage/InMemoryHandler","link":"<a href=\"module-Storage_InMemoryHandler.html\">module:Storage/InMemoryHandler</a>"},{"title":"module:Storage/InMemoryHandler#implClear","link":"<a href=\"module-Storage_InMemoryHandler.html#implClear\">module:Storage/InMemoryHandler &rtrif; implClear</a>"},{"title":"module:Storage/InMemoryHandler#implLoad","link":"<a href=\"module-Storage_InMemoryHandler.html#implLoad\">module:Storage/InMemoryHandler &rtrif; implLoad</a>"},{"title":"module:Storage/InMemoryHandler#implSave","link":"<a href=\"module-Storage_InMemoryHandler.html#implSave\">module:Storage/InMemoryHandler &rtrif; implSave</a>"},{"title":"module:Storage/LocalStorageHandler","link":"<a href=\"module-Storage_LocalStorageHandler.html\">module:Storage/LocalStorageHandler</a>"},{"title":"module:Storage/LocalStorageHandler#implClear","link":"<a href=\"module-Storage_LocalStorageHandler.html#implClear\">module:Storage/LocalStorageHandler &rtrif; implClear</a>"},{"title":"module:Storage/LocalStorageHandler#implLoad","link":"<a href=\"module-Storage_LocalStorageHandler.html#implLoad\">module:Storage/LocalStorageHandler &rtrif; implLoad</a>"},{"title":"module:Storage/LocalStorageHandler#implSave","link":"<a href=\"module-Storage_LocalStorageHandler.html#implSave\">module:Storage/LocalStorageHandler &rtrif; implSave</a>"},{"title":"module:Storage/SessionStorageHandler","link":"<a href=\"module-Storage_SessionStorageHandler.html\">module:Storage/SessionStorageHandler</a>"},{"title":"module:Storage/SessionStorageHandler#implClear","link":"<a href=\"module-Storage_SessionStorageHandler.html#implClear\">module:Storage/SessionStorageHandler &rtrif; implClear</a>"},{"title":"module:Storage/SessionStorageHandler#implLoad","link":"<a href=\"module-Storage_SessionStorageHandler.html#implLoad\">module:Storage/SessionStorageHandler &rtrif; implLoad</a>"},{"title":"module:Storage/SessionStorageHandler#implSave","link":"<a href=\"module-Storage_SessionStorageHandler.html#implSave\">module:Storage/SessionStorageHandler &rtrif; implSave</a>"},{"title":"module:Strategy","link":"<a href=\"module-Strategy.html\">module:Strategy</a>"},{"title":"module:Strategy#decrypt","link":"<a href=\"module-Strategy.html#decrypt\">module:Strategy &rtrif; decrypt</a>"},{"title":"module:Strategy#decrypt","link":"<a href=\"module-Strategy.html#decrypt\">module:Strategy &rtrif; decrypt</a>"},{"title":"module:Strategy#encrypt","link":"<a href=\"module-Strategy.html#encrypt\">module:Strategy &rtrif; encrypt</a>"},{"title":"module:Strategy#encrypt","link":"<a href=\"module-Strategy.html#encrypt\">module:Strategy &rtrif; encrypt</a>"},{"title":"module:Strategy#readKeys","link":"<a href=\"module-Strategy.html#readKeys\">module:Strategy &rtrif; readKeys</a>"},{"title":"Storage","link":"<a href=\"module-Storage.html\">Storage</a>"},{"title":"module:Storage#clear","link":"<a href=\"module-Storage.html#clear\">module:Storage &rtrif; clear</a>"},{"title":"module:Storage#deserialize","link":"<a href=\"module-Storage.html#deserialize\">module:Storage &rtrif; deserialize</a>"},{"title":"module:Storage#implClear","link":"<a href=\"module-Storage.html#implClear\">module:Storage &rtrif; implClear</a>"},{"title":"module:Storage#implLoad","link":"<a href=\"module-Storage.html#implLoad\">module:Storage &rtrif; implLoad</a>"},{"title":"module:Storage#implSave","link":"<a href=\"module-Storage.html#implSave\">module:Storage &rtrif; implSave</a>"},{"title":"module:Storage#load","link":"<a href=\"module-Storage.html#load\">module:Storage &rtrif; load</a>"},{"title":"module:Storage#save","link":"<a href=\"module-Storage.html#save\">module:Storage &rtrif; save</a>"},{"title":"module:Storage#serialize","link":"<a href=\"module-Storage.html#serialize\">module:Storage &rtrif; serialize</a>"},{"title":"Storage/InMemoryHandler","link":"<a href=\"module-Storage_InMemoryHandler.html\">Storage/InMemoryHandler</a>"},{"title":"module:Storage/InMemoryHandler#implClear","link":"<a href=\"module-Storage_InMemoryHandler.html#implClear\">module:Storage/InMemoryHandler &rtrif; implClear</a>"},{"title":"module:Storage/InMemoryHandler#implLoad","link":"<a href=\"module-Storage_InMemoryHandler.html#implLoad\">module:Storage/InMemoryHandler &rtrif; implLoad</a>"},{"title":"module:Storage/InMemoryHandler#implSave","link":"<a href=\"module-Storage_InMemoryHandler.html#implSave\">module:Storage/InMemoryHandler &rtrif; implSave</a>"},{"title":"Storage/LocalStorageHandler","link":"<a href=\"module-Storage_LocalStorageHandler.html\">Storage/LocalStorageHandler</a>"},{"title":"module:Storage/LocalStorageHandler#implClear","link":"<a href=\"module-Storage_LocalStorageHandler.html#implClear\">module:Storage/LocalStorageHandler &rtrif; implClear</a>"},{"title":"module:Storage/LocalStorageHandler#implLoad","link":"<a href=\"module-Storage_LocalStorageHandler.html#implLoad\">module:Storage/LocalStorageHandler &rtrif; implLoad</a>"},{"title":"module:Storage/LocalStorageHandler#implSave","link":"<a href=\"module-Storage_LocalStorageHandler.html#implSave\">module:Storage/LocalStorageHandler &rtrif; implSave</a>"},{"title":"Storage/SessionStorageHandler","link":"<a href=\"module-Storage_SessionStorageHandler.html\">Storage/SessionStorageHandler</a>"},{"title":"module:Storage/SessionStorageHandler#implClear","link":"<a href=\"module-Storage_SessionStorageHandler.html#implClear\">module:Storage/SessionStorageHandler &rtrif; implClear</a>"},{"title":"module:Storage/SessionStorageHandler#implLoad","link":"<a href=\"module-Storage_SessionStorageHandler.html#implLoad\">module:Storage/SessionStorageHandler &rtrif; implLoad</a>"},{"title":"module:Storage/SessionStorageHandler#implSave","link":"<a href=\"module-Storage_SessionStorageHandler.html#implSave\">module:Storage/SessionStorageHandler &rtrif; implSave</a>"},{"title":"Strategy","link":"<a href=\"module-Strategy.html\">Strategy</a>"},{"title":"module:Strategy#decrypt","link":"<a href=\"module-Strategy.html#decrypt\">module:Strategy &rtrif; decrypt</a>"},{"title":"module:Strategy#decrypt","link":"<a href=\"module-Strategy.html#decrypt\">module:Strategy &rtrif; decrypt</a>"},{"title":"module:Strategy#encrypt","link":"<a href=\"module-Strategy.html#encrypt\">module:Strategy &rtrif; encrypt</a>"},{"title":"module:Strategy#encrypt","link":"<a href=\"module-Strategy.html#encrypt\">module:Strategy &rtrif; encrypt</a>"},{"title":"module:Strategy#readKeys","link":"<a href=\"module-Strategy.html#readKeys\">module:Strategy &rtrif; readKeys</a>"}];
+setupSearch(list)
+</script>
+
+ 
+<script type="text/javascript" src="scripts/misc.js"></script>
+</body>
+</html>
