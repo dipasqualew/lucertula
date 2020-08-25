@@ -1,6 +1,6 @@
 {
   "name": "keylocal",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Keep your public and secret information grounded in your browser!",
   "main": "./index.js",
   "types": "./main.d.ts",
@@ -8,16 +8,9 @@
   "author": "William Di Pasquale <dipasquale.w@gmail.com>",
   "license": "MIT",
   "sideEffects": false,
-  "exports": {
-    "./": "./dist/"
-  },
-  "files": [
-    "./dist",
-    "./README.md",
-    "./LICENSE"
-  ],
   "scripts": {
     "build": "tsc",
+    "push": "cp package.json LICENSE README.md dist && cd dist && npm publish",
     "docs": "typedoc",
     "test": "jest --colors"
   },
@@ -26,6 +19,7 @@
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-typescript": "^7.10.4",
     "@types/jest": "^26.0.10",
+    "@types/openpgp": "^4.4.12",
     "@types/sinon": "^9.0.4",
     "@typescript-eslint/eslint-plugin": "^3.9.0",
     "@typescript-eslint/parser": "^3.9.0",
@@ -40,7 +34,6 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "@types/openpgp": "^4.4.12",
     "openpgp": "^4.10.7"
   }
 }
