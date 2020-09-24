@@ -24,6 +24,18 @@ Object {
 }
 `;
 
+exports[`InMemoryHandler + WebCryptoAesGcpHandler Encrypts a string 1`] = `
+Object {
+  "meta": Object {
+    "datetime": Any<Number>,
+    "key": "imh",
+    "serializer": "InMemoryHandler",
+    "version": 1,
+  },
+  "payload": Any<String>,
+}
+`;
+
 exports[`LocalStorageHandler + KeypairHandler Encrypts a string 1`] = `
 Object {
   "meta": Object {
@@ -48,6 +60,18 @@ Object {
 }
 `;
 
+exports[`LocalStorageHandler + WebCryptoAesGcpHandler Encrypts a string 1`] = `
+Object {
+  "meta": Object {
+    "datetime": Any<Number>,
+    "key": "lsh",
+    "serializer": "LocalStorageHandler",
+    "version": 1,
+  },
+  "payload": Any<String>,
+}
+`;
+
 exports[`SessionStorageHandler + KeypairHandler Encrypts a string 1`] = `
 Object {
   "meta": Object {
@@ -61,6 +85,18 @@ Object {
 `;
 
 exports[`SessionStorageHandler + PasswordHandler Encrypts a string 1`] = `
+Object {
+  "meta": Object {
+    "datetime": Any<Number>,
+    "key": "ssh",
+    "serializer": "SessionStorageHandler",
+    "version": 1,
+  },
+  "payload": Any<String>,
+}
+`;
+
+exports[`SessionStorageHandler + WebCryptoAesGcpHandler Encrypts a string 1`] = `
 Object {
   "meta": Object {
     "datetime": Any<Number>,
