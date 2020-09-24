@@ -1,6 +1,6 @@
 {
   "name": "keylocal",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Keep your public and secret information grounded in your browser!",
   "main": "./index.js",
   "types": "./main.d.ts",
