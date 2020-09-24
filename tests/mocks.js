@@ -84,6 +84,8 @@ export const PAYLOAD = {
   },
 };
 
+export const DECRYPTED = JSON.stringify(PAYLOAD);
+
 /**
  * Typical password used
  * in symmetrical strategies.
@@ -228,3 +230,5 @@ export const ENCRYPTED_WITH_KEYPAIR = [
   '=TpPQ',
   '-----END PGP MESSAGE-----',
 ].join('\n');
+
+export const AES_GCP_ENCRYPTED = 'c1abcc38ca91dc9e1aa0e657Y5DqYDmjdZ9MRGZqdrrOaDY8sAx5XXy5zJy8DvAHdfJzaeeV6ILCNRdHfLB5BwjgyavKGb8muKU+NYJQ';

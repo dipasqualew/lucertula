@@ -1,5 +1,7 @@
-import sinon from 'sinon';
+import { TextDecoder } from 'util';
 
+import crypto from '@trust/webcrypto';
+import sinon from 'sinon';
 import TextEncoding from 'text-encoding-utf-8';
 
 import { InMemoryHandler } from '../../src/storage/inMemory';
@@ -7,6 +9,7 @@ import { LocalStorageHandler } from '../../src/storage/localStorage';
 import { SessionStorageHandler } from '../../src/storage/sessionStorage';
 import { KeypairHandler } from '../../src/strategy/pgp/keypair';
 import { PasswordHandler } from '../../src/strategy/pgp/password';
+import { WebCryptoAesGcpHandler } from '../../src/strategy/web/aes-gcp';
 import {
   getLocalStorage,
   getSessionStorage,
@@ -17,6 +20,7 @@ import {
   KEYPAIR_PASSPHRASE,
   ENCRYPTED_WITH_PASSWORD,
   ENCRYPTED_WITH_KEYPAIR,
+  AES_GCP_ENCRYPTED,
 } from '../mocks';
 
 
@@ -26,7 +30,7 @@ import {
  *
  * @const {object}
  */
-const PASSWORD_CONTEXT = {
+const PGP_PASSWORD_CONTEXT = {
   password: PASSWORD,
   encryptedBlock: ENCRYPTED_WITH_PASSWORD,
 };
@@ -37,11 +41,20 @@ const PASSWORD_CONTEXT = {
  *
  * @const {object}
  */
-const KEYPAIR_CONTEXT = {
+const PGP_KEYPAIR_CONTEXT = {
   publicKey: PUBLIC_KEY,
   privateKey: PRIVATE_KEY,
   passphrase: KEYPAIR_PASSPHRASE,
   encryptedBlock: ENCRYPTED_WITH_KEYPAIR,
+};
+
+/**
+ * Context to be passed
+ * to WebCryptoAesGcpHandler
+ */
+const WEB_PASSWORD_CONTEXT = {
+  password: PASSWORD,
+  encryptedBlock: AES_GCP_ENCRYPTED,
 };
 
 /**
@@ -52,10 +65,11 @@ const KEYPAIR_CONTEXT = {
  * @param {Function} getStorage
  * @param {object} context
  */
-const integrationMatchTest = (getStrategy, getStorage, context) => {
+const integrationMatchTest = (getStrategy, getStorage, context, pgp = false) => {
   beforeAll(() => {
     global.TextEncoder = TextEncoding.TextEncoder;
-
+    global.TextDecoder = TextDecoder;
+    global.crypto = crypto;
   });
 
   const strategyName = getStrategy().constructor.name;
@@ -75,8 +89,10 @@ const integrationMatchTest = (getStrategy, getStorage, context) => {
         payload: expect.any(String),
       });
 
-      expect(encrypted.payload).toContain('-----BEGIN PGP MESSAGE-----');
-      expect(encrypted.payload).toContain('-----END PGP MESSAGE-----');
+      if (pgp) {
+        expect(encrypted.payload).toContain('-----BEGIN PGP MESSAGE-----');
+        expect(encrypted.payload).toContain('-----END PGP MESSAGE-----');
+      }
     });
 
     it('Decrypts a string', async () => {
@@ -135,6 +151,13 @@ const getPasswordHandler = () => new PasswordHandler();
 const getKeypairHandler = () => new KeypairHandler();
 
 /**
+ * Returns a configured WebCryptoAesGcpHandler
+ *
+ * @returns {WebCryptoAesGcpHandler}
+ */
+const getWebCryptoAesGcpHandler = () => new WebCryptoAesGcpHandler();
+
+/**
  * Returns a configured LocalStorageHandler.
  *
  * @param {StrategyHandler} strategy
@@ -172,8 +195,9 @@ const getSessionStorageHandler = (strategy) => {
 const getInMemoryHandler = (strategy) => new InMemoryHandler('imh', { strategy });
 
 const strategies = [
-  [getPasswordHandler, PASSWORD_CONTEXT],
-  [getKeypairHandler, KEYPAIR_CONTEXT],
+  [getPasswordHandler, PGP_PASSWORD_CONTEXT],
+  [getKeypairHandler, PGP_KEYPAIR_CONTEXT],
+  [getWebCryptoAesGcpHandler, WEB_PASSWORD_CONTEXT],
 ];
 
 const storages = [
