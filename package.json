@@ -1,6 +1,6 @@
 {
   "name": "keylocal",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Keep your public and secret information grounded in your browser!",
   "main": "./index.js",
   "types": "./main.d.ts",
@@ -10,7 +10,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "tsc",
-    "push": "cp package.json LICENSE README.md dist && cd dist && npm publish",
+    "push": "npm run build && cp package.json LICENSE README.md dist && cd dist && npm publish",
     "docs": "typedoc",
     "test": "jest --colors"
   },
