@@ -22,7 +22,7 @@
     "@types/jest": "^26.0.10",
     "@types/openpgp": "^4.4.12",
     "@types/sinon": "^9.0.4",
-    "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^3.9.0",
     "babel-jest": "^26.2.2",
     "eslint": "^7.6.0",
