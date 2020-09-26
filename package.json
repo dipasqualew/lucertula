@@ -12,7 +12,9 @@
     "build": "tsc",
     "push": "npm run build && cp package.json LICENSE README.md dist && cd dist && npm publish",
     "docs": "typedoc",
-    "test": "jest --colors"
+    "test": "jest --colors",
+    "test:feat": "yarn test --selectProjects FEAT",
+    "test:unit": "yarn test --selectProjects UNIT"
   },
   "devDependencies": {
     "@babel/core": "^7.11.0",
@@ -25,6 +27,7 @@
     "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^3.9.0",
     "babel-jest": "^26.2.2",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.6.0",
     "eslint-config-dipasqualew": "^1.0.0",
     "jest": "^26.2.2",
@@ -37,5 +40,10 @@
   },
   "peerDependencies": {
     "openpgp": "^4.10.7"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

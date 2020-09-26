@@ -21,11 +21,21 @@ jobs:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
 
-      - run: yarn install
+      - name: Install dependencies
+        run: yarn install
 
-      - run: yarn test
+      - name: Run tests
+        run: yarn test
         env:
+          COVERAGE: true
           CI: true
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage/clover.xml
+          fail_ci_if_error: true
 
   publish:
     name: Publish on NPM

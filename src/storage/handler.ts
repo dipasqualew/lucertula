@@ -29,7 +29,7 @@ export interface Serialized {
  * with common utility methods
  * shared between all storage handlers.
  */
-export class StorageHandler {
+export abstract class StorageHandler {
 
   /**
    * Refers to the version
@@ -146,34 +146,20 @@ export class StorageHandler {
   /**
    * Saves the data into the storage.
    * Override this method.
-   *
-   * @param {object} _context
-   * @param {object} _data
    */
-  async implSave(_context: EncryptionContext, _payload: Serialized): Promise<void> {
-    throw new Error('Not implemented.');
-  }
+  abstract async implSave(context: EncryptionContext, payload: Serialized): Promise<void>
 
   /**
    * Loads the data from the storage.
    * Override this method.
-   *
-   * @param {object} _context
-   * @returns {object}
    */
-  async implLoad(_context: EncryptionContext): Promise<Serialized | null> {
-    throw new Error('Not implemented.');
-  }
+  abstract async implLoad(_context: EncryptionContext): Promise<Serialized | null>
 
   /**
    * Clears the storage
    * deleting any encrypted data.
-   *
-   * @param {object} context
    */
-  async implClear(_context: EncryptionContext): Promise<void> {
-    throw new Error('Not implemented');
-  }
+  abstract async implClear(_context: EncryptionContext): Promise<void>
 
 }
 
