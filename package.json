@@ -33,7 +33,7 @@
     "text-encoding-utf-8": "^1.0.2",
     "tslint": "^6.1.3",
     "typedoc": "^0.19.2",
-    "typescript": "^3.9.7"
+    "typescript": "^4.0.3"
   },
   "peerDependencies": {
     "openpgp": "^4.10.7"
