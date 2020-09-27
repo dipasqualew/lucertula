@@ -41,6 +41,7 @@ export abstract class StorageHandler {
    * storage handler versions.
    */
   static version = 1;
+  static serializer = 'StorageHandler';
 
   key: string;
   di: StorageContext;
@@ -63,7 +64,7 @@ export abstract class StorageHandler {
     const output: Serialized = {
       meta: {
         key: this.key,
-        serializer: constructor.name,
+        serializer: constructor.serializer,
         version: constructor.version,
         datetime: Date.now(),
       },

@@ -16,6 +16,7 @@ import {
 export class InMemoryHandler extends StorageHandler {
 
   STORAGE: Serialized | null;
+  static serializer = 'InMemoryHandler';
 
   constructor(key: string, di: StorageContext) {
     super(key, di);
