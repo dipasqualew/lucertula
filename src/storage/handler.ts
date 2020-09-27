@@ -89,7 +89,7 @@ export abstract class StorageHandler {
       throw new Error('Invalid serialized data.');
     }
 
-    if (serialized.meta.serializer !== constructor.name) {
+    if (serialized.meta.serializer !== constructor.serializer) {
       throw new Error(`Invalid serializer: ${serialized.meta.serializer}`);
     }
 
