@@ -22,8 +22,8 @@ const getConfig = (type, color = 'blue', coverage = false) => {
 
 const jestConfig = {
   projects: [
-    getConfig('unit', 'blue', Boolean(process.env.COVERAGE)),
-    getConfig('feat', 'orange', Boolean(process.env.COVERAGE)),
+    getConfig('unit', 'cyan', Boolean(process.env.COVERAGE)),
+    getConfig('feat', 'magentaBright', Boolean(process.env.COVERAGE)),
   ],
 }
 

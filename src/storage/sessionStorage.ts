@@ -11,6 +11,8 @@ import { StorageHandler, Serialized } from './handler';
  */
 export class SessionStorageHandler extends StorageHandler {
 
+  static serializer = 'SessionStorageHandler';
+
   /**
      * Returns the SessionStorage instance.
      */

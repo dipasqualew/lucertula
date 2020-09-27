@@ -13,6 +13,7 @@ import { StorageHandler, Serialized } from './handler';
  * @constructor
  */
 export class LocalStorageHandler extends StorageHandler {
+  static serializer = 'LocalStorageHandler';
 
   get ls(): Storage {
     return window.localStorage;
