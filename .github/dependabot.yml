@@ -9,6 +9,7 @@ updates:
   - dipasqualew
   assignees:
   - dipasqualew
+  target-branch: 'dependecies'
   commit-message:
     prefix: "fix"
     prefix-development: "chore"
