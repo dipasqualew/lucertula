@@ -12,7 +12,7 @@ When it comes to user data security, the easiest and common strategy is to store
 
 However, sensible data should be encrypted. Moving user data to the frontend is not a reason to keep confidential information in plaintext, as the web browser may shared, and this would expose private data to unauthorised users.
 
-Lucertula aims to help you with that. It doesn't implement encryption/decryption algorythms, but rather exposes utility methods and shortcuts to easily encrypt and decrypt through a number of strategies, namily from OpenPGP JS and the WebCrypto API, and storing data against a number of storages. In particular:
+Lucertula aims to help you with that. It doesn't implement encryption/decryption algorithms, but rather exposes utility methods and shortcuts to easily encrypt and decrypt through a number of strategies, namily from OpenPGP JS and the WebCrypto API, and storing data against a number of storages. In particular:
 
 **Storages**
 
@@ -21,7 +21,7 @@ Lucertula aims to help you with that. It doesn't implement encryption/decryption
 - In Memory: Useful for development, keeps the data in a runtime JavaScript object.
 - _WIP: Remote_: Write and read data from a remote location of your (or your user's) choice
 
-**Algorythms**
+**Algorithms**
 
 - `openpgpjs` symmetric encryption (using a password)
 - `openpgpjs` asymmetric encryption (using private and public keys)
@@ -32,7 +32,7 @@ See the incredible work done by the folk at `openpgpjs`:
 
 ## API
 
-Any storage is compatible with any algorythm.
+Any storage is compatible with any algorithm.
 
 The library supports tree-shaking, so it is recommended to import storages and strategies directly.
 
