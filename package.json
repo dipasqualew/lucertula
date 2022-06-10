@@ -32,7 +32,7 @@
     "eslint-config-dipasqualew": "^1.0.0",
     "jest": "^26.2.2",
     "openpgp": "^4.10.7",
-    "semantic-release": "^17.1.2",
+    "semantic-release": "^19.0.3",
     "sinon": "^9.0.2",
     "text-encoding-utf-8": "^1.0.2",
     "tslint": "^6.1.3",
